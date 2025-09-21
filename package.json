@@ -1,0 +1,23 @@
+{
+  "name": "weather-monitor",
+  "version": "1.0.0",
+  "description": "Tiny Node/Express app that proxies OpenWeather: Web UI + CLI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "cli": "node cli-client.js"
+  },
+  "keywords": [
+    "weather",
+    "openweather",
+    "express",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
