@@ -1,12 +1,99 @@
-<html>
-    <head>
-        <title>What's it like outside?</title>
-    </head>
-    <body>
-        <h1>What's it like outside?</h1>
-        <div id="api-data-container">
-            ...Loading Data
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather Monitor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Weather Monitor</h1>
+      <p class="tagline">Web + CLI demo using OpenWeather</p>
+    </header>
+
+    <main class="container" id="app">
+      <section class="panel">
+        <h2 class="panel-title">Check the weather</h2>
+        <form id="weather-form" class="form" autocomplete="on">
+          <fieldset class="fieldset">
+            <legend>Search by City</legend>
+            <div class="grid">
+              <label class="field">
+                <span class="label">City</span>
+                <input id="city" name="city" type="text" placeholder="Cincinnati" />
+              </label>
+              <label class="field">
+                <span class="label">State/Region</span>
+                <input id="state" name="state" type="text" placeholder="OH" />
+              </label>
+              <label class="field">
+                <span class="label">Country</span>
+                <input id="country" name="country" type="text" placeholder="US" />
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="or">or</div>
+
+          <fieldset class="fieldset">
+            <legend>Search by Coordinates</legend>
+            <div class="grid">
+              <label class="field">
+                <span class="label">Latitude</span>
+                <input id="lat" name="lat" type="number" step="any" placeholder="39.10" inputmode="decimal" />
+              </label>
+              <label class="field">
+                <span class="label">Longitude</span>
+                <input id="lon" name="lon" type="number" step="any" placeholder="-84.51" inputmode="decimal" />
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="field">
+            <span class="label">Units</span>
+            <select id="units" name="units">
+              <option value="">Default (server)</option>
+              <option value="metric">Metric (°C)</option>
+              <option value="imperial">Imperial (°F)</option>
+              <option value="standard">Standard (K)</option>
+            </select>
+          </label>
+
+          <div class="actions">
+            <button class="btn" type="submit">Get Weather</button>
+            <button class="btn ghost" type="reset" id="reset-btn">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="results" aria-live="polite" class="results">
+        <div id="status" class="status" hidden></div>
+        <div id="card" class="card" hidden>
+          <div class="card-body">
+            <div class="card-main">
+              <img id="icon" alt="" class="icon" />
+              <div>
+                <h3 id="place" class="place"></h3>
+                <p id="desc" class="desc"></p>
+              </div>
+            </div>
+            <dl class="stats">
+              <div><dt>Temp</dt><dd><span id="temp">—</span></dd></div>
+              <div><dt>Feels</dt><dd><span id="feels">—</span></dd></div>
+              <div><dt>Humidity</dt><dd><span id="humidity">—</span></dd></div>
+              <div><dt>Wind</dt><dd><span id="wind">—</span></dd></div>
+            </dl>
+            <pre id="raw" class="raw" hidden></pre>
+          </div>
         </div>
-        <script src="client.js"></script>
-    </body>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>CLI: <code>npm run cli</code> — Server: <code>npm start</code></p>
+    </footer>
+
+    <script src="client.js" defer></script>
+  </body>
 </html>
